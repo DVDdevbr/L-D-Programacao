@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        alert("Seja Bem Vindo!")
+
+        function escrever(texto) {
+            document.write(texto);
+        }
+        function pular() {
+            document.write("<br><br>");
+        }
+
+        // Consumo e Distancia
+        var distancia = parseFloat(prompt("Qual á Distancia percorrida entre á sua casa e o seu trabalho (em KM) ?"));
+        while(isNaN(distancia)){
+            distancia = parseFloat(prompt("Invalido! Digite apenas números:"));
+        }
+        var consumo = parseFloat(prompt("Qual á Consumo médio do seu veiculo (em KM/L)"));
+        while(isNaN(consumo)){
+            consumo = parseFloat(prompt("Invalido!, digite apenas números:"));
+        }
+        var litros = distancia/consumo; 
+        escrever("Consumo necessário são: " + litros.toFixed(1) + " Litros ");
+        pular();
+
+        // Postos
+        var quantidadePostos = parseInt(prompt("Quantos postos foram pesquisados ?"));
+        while(isNaN(quantidadePostos)){
+            quantidadePostos = parseInt(prompt("Invalido! Digite apenas números:"));
+        }
+        var soma = 0;
+        var menorPreco;
+        for(var cont = 1; cont <= quantidadePostos; cont++){
+            var preco = parseFloat(prompt("Digite o preço do posto " + cont + ":"));
+            while(isNaN(preco)){
+                preco = parseFloat(prompt("Inválido! Digite apenas números:"));
+            }
+            soma += preco;
+            if(cont == 1){
+                menorPreco = preco;
+            } else {
+            if (preco < menorPreco){
+                menorPreco = preco;
+            }
+          }
+        }
+        escrever("Menor preço encontrado é: R$ " + menorPreco.toFixed(2));
+        pular()
+        var media = soma/quantidadePostos
+        escrever("A média dos preços é: R$ " + media.toFixed(2));
+        pular()
+        
+        // Gasto Diário
+        var gastoDiario = 2 * (litros * menorPreco);
+        escrever("Seu gasto diário é: R$ " + gastoDiario.toFixed(2));
+      
+        alert("Cálculo concluído!");
+    </script>
+
+    
+</body>
+
+</html>
